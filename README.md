@@ -24,6 +24,7 @@ Deploy web server and visualiser
 ```
 bash 3_deploy.sh
 ```
+### Using for other apps
 Now you can deploy stacks with your apps for instance your app could look like this
 ```
 /docker-compose.yml
