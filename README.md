@@ -15,7 +15,7 @@ Init swarm manager and create external network
 ```
 bash 2_init.sh
 ```
-It is possible that your local environment has multiple addresses on interface that swarm wants to use then choose one and pass it
+It is possible that your local environment has multiple addresses on interface that swarm wants to use, if so then choose one and pass it
 ```
 ifconfig
 bash 2_init.sh 111.111.111.111 (address which you want to use from ifconfig)
@@ -23,4 +23,48 @@ bash 2_init.sh 111.111.111.111 (address which you want to use from ifconfig)
 Deploy web server and visualiser
 ```
 bash 3_deploy.sh
+```
+Now you can deploy stacks with your apps for instance your app could look like this
+```
+/docker-compose.yml
+/Dockerfile
+/public/app.php (this is where nginx will point to)
+```
+Where docker-compose.yml
+```yml
+version: "3.5"
+
+networks:
+    webnet:
+        name: default-docker-apps-network
+        external: true
+
+services:
+    rest-app:
+        image: rest-app:latest
+        deploy:
+            replicas: 2
+            resources:
+                limits:
+                    cpus: "0.1"
+                    memory: 50M
+            restart_policy:
+                condition: on-failure
+        ports:
+            - "9000:9000"
+        networks:
+            - webnet
+```
+And Dockerfile
+```
+FROM php:7.2.10-fpm-alpine3.8
+
+ADD /public /var/www/html/public
+
+EXPOSE 9000
+```
+And app.php
+```
+<?php
+echo 'Hello world!';
 ```
