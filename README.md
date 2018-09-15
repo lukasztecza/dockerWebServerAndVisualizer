@@ -69,3 +69,19 @@ And app.php
 <?php
 echo 'Hello world!';
 ```
+Lets assume that your app will be named rest-app, update your `/etc/hosts` with
+```
+127.0.0.1   www.rest-app.com
+```
+Then go to yours app root directory and deploy stack
+```
+docker stack deploy -c docker-compose.yml rest-app
+```
+Once you see in visualiser that app is up (green dot next to rest-app)
+```
+http://www.rest-app.com:8080
+```
+You should be able to see Hello world! here
+```
+http://www.rest-app.com
+```
