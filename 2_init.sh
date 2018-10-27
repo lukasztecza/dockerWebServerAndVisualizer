@@ -5,6 +5,8 @@ else
     docker swarm init --advertise-addr $1
 fi
 
-docker network create -d overlay default-docker-apps-network
+if ! docker network ls | grep "default-docker-apps-network" ; then
+    docker network create -d overlay default-docker-apps-network
+fi
 
 echo "Docker swarm ready.";
