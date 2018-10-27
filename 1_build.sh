@@ -5,10 +5,4 @@ if [ -d docker-nginx-webserver ]; then
     cd ..;
 fi
 
-#if [ ! -d docker_playground_mysql_app ]; then
-#    cd docker_playground_mysql_app;
-#    docker build -t docker_playground_mysql_app .;
-#    cd ..;
-#fi
-
 echo "Docker image ready.";
