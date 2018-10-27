@@ -1,4 +1,4 @@
-# dockerPlayground
+# dockerWebServerAndVisualizer
 Docker playground for development purposes
 
 ### Usage
