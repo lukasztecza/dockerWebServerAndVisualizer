@@ -4,7 +4,7 @@ Docker playground for development purposes
 ### Usage
 Clone this repo
 ```
-git clone http://lukasztecza/dockerPlayground
+git clone https://github.com/lukasztecza/dockerPlayground.git
 cd dockerPlaygound
 ```
 Build docker images
