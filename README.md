@@ -24,6 +24,7 @@ Deploy web server and visualiser
 ```
 bash 3_deploy.sh
 ```
+By default web-server points to fastcgi script on port 9000 of the app container picked by domain name
 ### Using for other apps
 Now you can deploy stacks with your apps for instance your app could look like this
 ```
@@ -31,7 +32,7 @@ Now you can deploy stacks with your apps for instance your app could look like t
 /Dockerfile
 /public/app.php (this is where nginx will point to)
 ```
-Where docker-compose.yml
+Where docker-compose.yml (note exposed port 9000 for fastcgi, and shared volume for dev)
 ```yml
 version: "3.5"
 
@@ -53,6 +54,8 @@ services:
                 condition: on-failure
         ports:
             - "9000:9000"
+        volumes:
+            - "./:/var/www/html/"
         networks:
             - webnet
 ```
@@ -68,8 +71,9 @@ And app.php
 ```
 <?php
 echo 'Hello world!';
+echo $_SERVER['HOSTNAME'];
 ```
-Make sure your app has built image
+Make sure your app has image built on your machine
 ```
 docker image ls
 ```
@@ -81,7 +85,7 @@ Lets assume that your app will be named rest-app, update your `/etc/hosts` with
 ```
 127.0.0.1   www.rest-app.com
 ```
-Then go to yours app root directory and deploy stack
+Then go to your app root directory and deploy stack
 ```
 docker stack deploy -c docker-compose.yml rest-app
 ```
@@ -93,7 +97,15 @@ You should be able to see Hello world! here
 ```
 http://www.rest-app.com
 ```
-You can scale the service
+You can scale the service (service name is built from stack name and name of app in docker compose)
+```
+docker service scale rest-app_rest-app=5
+```
+You may need to restart web-server if so just scale it down to 0 and back to 1
+```
+docker service scale dnw_web-server=0
+docker service scale dnw_web-server=1
+```
 And leave the swarm
 ```
 docker swarm leave --force 
