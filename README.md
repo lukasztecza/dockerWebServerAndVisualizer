@@ -69,6 +69,14 @@ And app.php
 <?php
 echo 'Hello world!';
 ```
+Make sure your app has built image
+```
+docker image ls
+```
+If it is not there build image once in app directory where Dockerfile lives
+```
+docker build -t rest-app .
+```
 Lets assume that your app will be named rest-app, update your `/etc/hosts` with
 ```
 127.0.0.1   www.rest-app.com
