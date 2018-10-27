@@ -106,6 +106,10 @@ You may need to restart web-server if so just scale it down to 0 and back to 1
 docker service scale dnw_web-server=0
 docker service scale dnw_web-server=1
 ```
+You can remove stack
+```
+docker stack rm rest-app
+```
 And leave the swarm
 ```
 docker swarm leave --force 
