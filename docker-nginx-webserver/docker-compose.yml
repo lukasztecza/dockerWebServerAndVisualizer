@@ -29,7 +29,5 @@ services:
                 condition: on-failure
         ports:
             - "80:80"
-#        volumes:
-#            - "/app/assets:/var/www/html/public/assets"
         networks:
             - webnet
