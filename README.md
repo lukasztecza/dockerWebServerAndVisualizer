@@ -31,7 +31,7 @@ Now you can deploy stacks with your apps for instance your app could look like t
 ```
 /docker-compose.yml
 /Dockerfile
-/public/app.php (this is where nginx will point to)
+/public/app.php
 ```
 Where docker-compose.yml (note exposed port 9000 for fastcgi, and shared volume for dev)
 ```yml
