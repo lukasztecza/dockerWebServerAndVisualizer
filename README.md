@@ -25,7 +25,7 @@ Deploy web server and visualiser
 bash 3_deploy.sh
 ```
 By default web-server points to fastcgi script on port 9000 of the app container picked by domain name,
-assumes that front controller lives in public/app.php and assumes that assets live in public/assets
+assumes that front controller lives in `public/app.php` and assumes that assets live in `public/assets`
 ### Using for other apps
 Now you can deploy stacks with your apps for instance your app could look like this
 ```
