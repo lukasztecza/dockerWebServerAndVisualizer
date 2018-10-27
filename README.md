@@ -93,3 +93,8 @@ You should be able to see Hello world! here
 ```
 http://www.rest-app.com
 ```
+You can scale the service
+And leave the swarm
+```
+docker swarm leave --force 
+```
