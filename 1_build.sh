@@ -1,8 +1,3 @@
 #!/bin/bash
-if [ -d docker-nginx-webserver ]; then
-    cd docker-nginx-webserver;
-    docker build -t docker-nginx-webserver .;
-    cd ..;
-fi
-
-echo "Docker image ready.";
+CURRENT_DIR=$(dirname $0)
+docker build -t docker-nginx-webserver "$CURRENT_DIR/docker-nginx-webserver/."
