@@ -20,9 +20,9 @@ It is possible that your local environment has multiple addresses on interface t
 ifconfig
 bash 2_init.sh 111.111.111.111 (address which you want to use from ifconfig)
 ```
-Deploy web server and visualiser
+Deploy web server and visualiser (if you do not want visualizer do not write `visualizer`)
 ```
-bash 3_deploy.sh
+bash 3_deploy.sh visualizer
 ```
 By default web-server points to fastcgi script on port 9000 of the app container picked by domain name,
 assumes that front controller lives in `public/app.php` and assumes that assets live in `public/assets`
