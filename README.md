@@ -46,15 +46,13 @@ services:
     rest-app:
         image: rest-app:latest
         deploy:
-            replicas: 2
+            replicas: 3
             resources:
                 limits:
                     cpus: "0.1"
                     memory: 50M
             restart_policy:
                 condition: on-failure
-        ports:
-            - "9000:9000"
         volumes:
             - "./:/var/www/html/"
         networks:
@@ -72,6 +70,7 @@ And app.php
 ```
 <?php
 echo 'Hello world!';
+echo '<br />';
 echo $_SERVER['HOSTNAME'];
 ```
 Make sure your app has image built on your machine
